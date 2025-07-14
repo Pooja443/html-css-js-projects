@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        }
+
+        
+        button{
+            width: 60px;
+            height:60px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            background-color: 
+            #FFFFFF;
+            border: 2px solid #f4f5fe ;
+            color: #3E3E3E;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 2px 2px 2px 2px black;
+           
+        }
+        button:active {
+        transform: scale(0.95);
+        box-shadow: 1px 1px 1px black;
+        transition: transform 0.1s ease;
+        }
+
+        .container{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              width: 100%;
+              height: 570px;
+              row-gap: 20px;
+              margin-top: 100px;
+        }
+        #text{
+            width: 298px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 2px solid #f4f5fe;
+            text-align: right;
+            background-color: #3C3C3C;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: 0.5s linear ease;
+            letter-spacing: 2px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .wrapper{
+            width: 340px;
+            height: 600px;
+            background: #B1B1B1;
+            border-radius: 30px;
+            padding-left: 20px;
+            padding-top: 15px;
+            border: 2px solid #f4f5fe;
+        }
+        button:hover{
+            background-color:   #B1B1B1;
+            transition: 0.5 all ease;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">'
+        <div class="wrapper">
+        <div>
+        <input type="text" id="text" >
+        </div>
+        <div>
+      
+            <button style="background-color: #EB4C1E; border: none; color: white;" >AC</button>
+            <button>DEL</button>
+            <button>%</button>
+            <button>/</button>
+        </div>
+        <div>
+        <button id="buttons">7</button>
+        <button id="buttons">8</button>
+        <button id="buttons">9</button>
+        <button>*</button>
+    </div>
+    <div>
+        <button id="buttons">4</button>
+        <button id="buttons">5</button>
+        <button id="buttons">6</button>
+        <button>-</button>
+    </div>
+    <div>
+        <button id="buttons">1</button>
+        <button id="buttons">2</button>
+        <button id="buttons">3</button>
+        <button>+</button>
+    </div>
+    <div>
+        <button id="buttons">00</button>
+        <button id="buttons">0</button>
+        <button>.</button>
+        <button>=</button>
+       
+    </div>
+</div>
+  
+        
+       
+     
+    </div>
+    <script>
+
+        const number = document.querySelectorAll("button");
+        const input = document.querySelector("#text");
+        
+        number.forEach(button => {
+         
+            button.addEventListener("click" ,function(){
+            let a = button.innerHTML;
+            input.style.transition = "color 0.3s ease-in-out"; 
+
+            if(a === "AC"){
+              input.value = "";
+            }
+            else if(a === "DEL")
+            {    
+              
+                input.value = input.value.slice(0,-1); 
+
+            }
+            else if(a === "="){
+               input.value = eval(input.value);
+            }
+            else{
+                input.value += a; 
+            }
+           
+          
+      });
+    });
+    
+   
+  
+
+
+
+    </script>
+</body>
+</html>

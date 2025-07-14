@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      padding: 20px;
+    }
+
+    img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 25px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .card p:first-child {
+      font-size: 1.2rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    #display {
+      font-size: 1.8rem;
+      color: #111827;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .shop-btn {
+      padding: 12px 30px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .shop-btn:hover {
+      background-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Sale ends on August 10</h1>
+
+  <div class="card">
+    <p>Countdown</p>
+    <p id="display"></p>
+  </div>
+
+  <a href="#" class="shop-btn">Shop Now</a>
+
+  <script>
+    const counts = document.getElementById("display");
+
+    function updateTime() {
+      const currentDate = new Date().getTime();
+      const targetDate = new Date("2025-08-10T00:00:00").getTime();
+      const daysLeft = targetDate - currentDate;
+
+      if (daysLeft < 0) {
+        counts.innerHTML = "Sale Ended!";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(daysLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((daysLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const min = Math.floor((daysLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const sec = Math.floor((daysLeft % (1000 * 60)) / 1000);
+
+      const display = `${days}d ${String(hours).padStart(2, '0')}h ${String(min).padStart(2, '0')}min ${String(sec).padStart(2, '0')}sec`;
+      counts.innerHTML = display;
+    }
+
+    const timer = setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>

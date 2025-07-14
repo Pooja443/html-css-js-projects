@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QUOTE GENERATOR</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .container {
+    background-color: #2c2c3e;
+    border-radius: 15px;
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    }
+
+    button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00bcd4;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 20px;
+    }
+
+    button:hover {
+    background-color: #0097a7;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    }
+
+    button:active {
+    opacity: 0.8;
+    }
+
+    #quote {
+    font-size: 1.2rem;
+    color: #f1f1f1;
+    line-height: 1.6;
+    padding: 10px;
+    }
+
+    #quote p:last-child {
+    font-size: 1rem;
+    color: #00bcd4;
+    font-style: italic;
+    margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="generate">Generate</button>
+    <div id="quote"></div>
+  </div>
+
+  <script>
+    const quotesDisplay = document.getElementById("quote");
+    const button = document.getElementById("generate");
+
+    const quotes = [
+      {
+        name: "English is a language spoken by humans",
+        auth: "-Anonymous"
+      },
+      {
+        name: "My name starts with J",
+        auth: "-Sir Jenkinson"
+      },
+      {
+        name: "Stars shine at night",
+        auth: "-Who"
+      },
+      {
+        name: "Believe in yourself, Matia!",
+        auth: "-Anonymous"
+      },
+      {
+        name: "Happiness is not something ready-made. It comes from your own actions.",
+        auth: "-Dalai Lama"
+      },
+      {
+        name: "Be yourself; everyone else is already taken.",
+        auth: "-Oscar Wilde"
+      },
+      {
+        name: "Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying, ‘I will try again tomorrow.’",
+        auth: "-Mary Anne Radmacher"
+      },
+      {
+        name: "Everything you’ve ever wanted is on the other side of fear.",
+        auth: "-George Addair"
+      },
+      {
+        name: "Don’t watch the clock; do what it does. Keep going.",
+        auth: "-Sam Levenson"
+      },
+      {
+        name: "Dream big and dare to fail.",
+        auth: "-Norman Vaughan"
+      },
+      {
+        name: "You miss 100% of the shots you don’t take.",
+        auth: "-Wayne Gretzky"
+      },
+      {
+        name: "Success usually comes to those who are too busy to be looking for it.",
+        auth: "-Henry David Thoreau"
+      },
+      {
+        name: "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+        auth: "-Ralph Waldo Emerson"
+      },
+      {
+        name: "Turn your wounds into wisdom.",
+        auth: "-Oprah Winfrey"
+      }
+    ];
+
+    button.addEventListener("click", function () {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quotesDisplay.innerHTML = `
+        <p>"${randomQuote.name}"</p>
+        <p class="author">${randomQuote.auth}</p>
+      `;
+    });
+  </script>
+</body>
+</html>

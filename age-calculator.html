@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Age Calculator
+        </title>
+    
+         <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: #1F1F2E;
+                color: #F9F9F9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .Calculator-body {
+                background-color: #2E2E3A;
+                width: 500px;
+                border-radius: 30px;
+                padding: 40px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                color: #FF2E63;
+                margin-bottom: 20px;
+            }
+
+            #info {
+                color: #AAAAAA;
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .date-container input[type="date"] {
+                width: 80%;
+                padding: 12px 20px;
+                font-size: 1rem;
+                background-color: #3E3E4A;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                margin-top: 10px;
+            }
+
+            #date:focus {
+                outline: 2px solid #FF2E63;
+                background-color: #4A4A5A;
+            }
+
+            #calculate {
+                margin-top: 30px;
+                padding: 15px 30px;
+                background-color: #FF2E63;
+                color: white;
+                border: none;
+                font-size: 1rem;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            #calculate:hover {
+                background-color: #FF4D7E;
+            }
+
+            #display {
+                margin-top: 25px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #08D9D6;
+            }
+
+
+
+                   
+         </style>
+    </head>
+        <body>
+            <div class="Calculator-body">
+                <div class="content">
+             <h1>Age Calculator</h1>
+             <span id="info">Enter your date of birth</span>
+             <div class="date-container">
+             <input type="date" id="date">
+            </div>
+            <button id="calculate">Calculate Age</button>
+            <p id="display"></p>
+            </div>
+        </div>
+            <script>
+
+                function getData(){
+                    const inputValue = document.getElementById("date");
+                    const getVal = inputValue.value;
+                        if (!getVal) {
+                        output.innerHTML = "Please select a valid date.";
+                        return;
+                        }
+                    const output = document.getElementById("display");
+                    const birthDate = new Date(getVal);
+                    const today = new Date();
+                    const yyyy = today.getFullYear() - birthDate.getFullYear();
+                    const mm = String(today.getMonth()+1).padStart(2, '0') - String(birthDate.getMonth()+1).padStart(2 , '0');
+                    const dd = String(today.getDate()).padStart(2,'0') - String(birthDate.getDay()).padStart(2 , '0');
+
+
+                  
+
+                    if(today.getFullYear() < birthDate.getFullYear){
+                        output.innerHTML = ` invalid year`;
+                    }
+
+                    output.innerHTML = ` You are ${yyyy} years old`;
+                    
+                }
+                const button = document.getElementById("calculate");
+                button.addEventListener ("click" , getData);
+               
+
+
+            </script>
+        </body>
+</html>

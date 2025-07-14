@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Gradient generator
+    </title>
+    <style>
+        body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f4f8;
+        }
+
+        .container {
+        width: 350px;
+        height: 450px;
+        background-color: #ffffff;
+        padding: 20px;
+        overflow: hidden;
+        margin-top: 150px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        }
+
+        #box {
+        width: 100%;
+        height: 150px;
+        background: linear-gradient(to left top, #6366f1, #ec4899);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        }
+
+        select {
+        border: 2px solid #94a3b8;
+        font-size: 12px;
+        font-weight: bold;
+        color: #1f2937;
+        padding-left: 6px;
+        letter-spacing: 1px;
+        padding: 5px;
+        }
+
+        select:focus {
+        border-color: #6366f1;
+        }
+
+        #text {
+        border: 1px solid #cbd5e1;
+        resize: none;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: #1f2937;
+        letter-spacing: 1.2px;
+        word-spacing: 2px;
+        background-color: #f8fafc;
+        }
+
+        button {
+        padding: 10px 30px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        transition: 0.2s ease;
+        border-radius: 6px;
+        }
+
+        #refresh {
+        background: #94a3b8;
+        color: white;
+        }
+
+        #copy {
+        background: #6366f1;
+        color: white;
+        }
+
+        button:hover {
+        opacity: 0.9;
+        }
+
+        button:active {
+        opacity: 0.7;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box"></div>
+        
+        <div class="wrapper1">
+            
+                <span>Directions:</span>
+                <span>color:</span>
+          
+       <div >
+        <select class="select-box">
+            <option value="to top">Top</option>
+            <option value="to right top">Right top</option>
+            <option value="to right">Right</option>
+            <option value="to right bottom">Right bottom</option>
+            <option value="to bottom">Bottom</option>
+            <option value="to left bottom">Left bottom</option>
+            <option value="to left">Left</option>
+            <option value="to left top" selected>Left top</option>
+        
+        </select>
+        </div>
+           
+        <div class="colors">
+     
+        <input type="color" id="color1" value="#5665E9">
+        <input type="color" id="color2"  value="#A271F8">
+        </div>
+        </div>
+        <div>
+        <textarea id="text" disabled>background-image: linear-gradient(to left top, #977DFE,  #6878FF);</textarea>
+       </div>
+       <div>
+        
+        <button id="refresh">Refresh color</button>
+        <button id="copy">Copy code</button>
+       </div>
+
+
+
+    </div>
+   
+<script> 
+        const color1 = document.getElementById("color1");
+        const color2 = document.getElementById("color2");
+        const refresh = document.getElementById("refresh");
+        const Gradient = document.getElementById("box");
+        const position = document.querySelector(".select-box");
+        const text = document.getElementById("text");
+        const copybtn = document.getElementById("copy");
+
+        function random() {
+            const randomColor = Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0");
+            return `#${randomColor}`;
+        }
+
+        function gradientUpdate() {
+            Gradient.style.background = `linear-gradient(${position.value}, ${color1.value}, ${color2.value})`;
+            const grad = Gradient.style.background;
+            text.value = `background: ${grad};`;
+        }
+
+        refresh.addEventListener("click", function () {
+            color1.value = random();
+            color2.value = random();
+            gradientUpdate();
+        });
+
+        copybtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(text.value);
+            copybtn.innerText = "Code Copied!";
+            setTimeout(() => {
+            copybtn.innerText = "Copy Code";
+            }, 1600);
+        });
+        color1.addEventListener("input", gradientUpdate);
+        color2.addEventListener("input", gradientUpdate);
+
+
+        position.addEventListener("change", gradientUpdate);
+
+        </script>
+</body>
+</html>

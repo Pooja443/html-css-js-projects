@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Simple Navigator </title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --main-background: #0f172a;
+            --main-slidebar-color: #1e293b;
+            --main-items-color: #38bdf8;
+            --main-fontColor: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--main-background);
+        }
+
+        ul {
+            list-style-type: none;
+            line-height: 70px;
+            padding-top: 20px;
+        }
+
+        .container {
+            width: 300px;
+            height: 500px;
+            margin-top: 20px;
+            margin-left: 20px;
+            background-color: var(--main-slidebar-color);
+            padding-top: 20px;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+        }
+
+        li {
+            padding-left: 30px;
+            color: var(--main-fontColor);
+            font-size: 1.5rem;
+        }
+
+        li:hover {
+            background-color: var(--main-items-color);
+            transition: background-color 0.5s ease;
+            color: black;
+        }
+
+        button {
+            background-color: var(--main-slidebar-color);
+            border: none;
+            position: relative;
+        }
+
+        .line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            border-bottom: 1px solid white;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+            margin-right: 10px; 
+        }
+
+        span {
+            font-size: 2rem;
+            color: var(--main-fontColor);
+            margin-right: 18%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            margin-left: 25px;
+            letter-spacing: 2px;
+        }
+
+        .hideMenu {
+            transform: translateX(-90%); 
+            background-color: var(--main-background);
+        }
+
+        .hideMenu button {
+            background-color: var(--main-background);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <span>Slide Bar</span>
+        <button id="toggleBtn">
+            <span class="line"></span> 
+            <span class="line"></span> 
+            <span class="line"></span> 
+        </button>
+        <ul class="Sliderbar">
+            <li>Home</li>
+            <li>About</li>
+            <li>Projects</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+
+    <script>
+        const SlideButton = document.getElementById("toggleBtn");
+        const SideBar = document.querySelector(".container");
+
+        SlideButton.addEventListener("click", function () {
+            SideBar.classList.toggle('hideMenu');
+        });
+    </script>
+</body>
+</html>

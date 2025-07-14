@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Click Counter</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+       body{
+        display: flex;
+       justify-content: center;
+       align-items: center;
+       color: white;
+       background: black;
+       margin-top: 250px;
+       } 
+       #button{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex-wrap: wrap;
+       }
+       p{
+        display: flex;
+       justify-content: center;
+        font-size: 4rem;
+       
+       }
+       button{
+        padding: 10px 40px;
+        border-radius: 10px;
+        background-color: aqua;
+        border: 2px solid white;
+       }
+       button:hover{
+        box-shadow: 1px 1px 1px white;
+       }
+       button:active{
+        opacity: 0.5;
+        
+       }
+       h2{
+            display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+        
+        
+    </style>
+</head>
+<body>
+    <div>
+    <h2>Counter</h2>
+    <div>
+     <p id="counts"></p>
+    </div>
+    <div id="button">
+        <button id="add-btn">Add Count</button>
+        <button id="less-btn">Lower Count</button>
+        </div>
+        </div>
+    <script>
+        const AddBtn = document.getElementById("add-btn");
+        const LessBtn = document.getElementById("less-btn");
+        const counts = document.getElementById("counts");
+        counts.innerHTML = 0;
+        function color(){
+        if(Number(counts.innerHTML) > 0){
+         counts.style.color = "lightgreen";
+         counts.style.transition = "1s all ease-in-out";
+        }
+        else if(Number(counts.innerHTML) < 0){
+           counts.style.color = "red";
+            counts.style.transition = "1s all ease-in-out";
+        }
+        else{
+            counts.style.color = "white";
+        }
+        }
+        AddBtn.addEventListener("click",function(){
+         counts.innerHTML = Number(counts.innerHTML)+1;
+         color();
+        }
+        )
+        
+       
+        LessBtn.addEventListener("click",function(){
+            counts.innerHTML = Number(counts.innerHTML)-1;
+            color();
+        })
+        
+
+
+
+    </script>
+</body>
+</html>
